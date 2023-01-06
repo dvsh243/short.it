@@ -1,33 +1,30 @@
+# fix hash collision on create
+# rate limiting
+# query country wise click count
 
-# python, html, css, javascript, mongodb, docker 
+# - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
+# - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
+
+
+# python, html, css, javascript, mongodb, nginx 
+
 
 '''v1'''
 # BACK-END
 # POST /api/create -> create tiny url
-# GET /h98g1hg0 -> redirect to url (MD5 hashing)
-# GET /h98g1hg0/analytics -> redirection analytics
-
-
-# fix hash collision
-# rate limiting
-
+# GET /h98g1hg0 -> redirect to url (~MD5~ uuid hashing)
+# GET /h98g1hg0/analytics -> redirection analytics (+json)
 
 # FRONT-END
 # -> create tiny url
 # -> analytics (total clicks, location wise clicks)
 # -> no such page found
 
-'''
-analytics data example -> 
-{
-    'total' : 89115,
-    'location': {
-        'India' : 7148,
-        'Nigeria' : 9015,
-        'US': 4924
-    }
-}
-'''
+
+
+# - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
+# - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
+
 
 
 '''v2'''
@@ -36,3 +33,7 @@ analytics data example ->
 # login
 # show my created tiny urls
 # analytics -> url clicks and locations
+
+
+# - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
+# - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
