@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse, JSONResponse
 from mongoengine.errors import DoesNotExist
+import geocoder
 
-from app.models import ShortUrlModel
+from app.models import ShortUrlModel, AnalyticsModel
 
 router = APIRouter(
     tags = ['api'],
@@ -18,17 +19,18 @@ async def redirect(
     """doesn't work on swagger"""
     print("\n\n")
 
-    print(request.client.host)
     print(f"redirecting to --> {shorturl}")
 
     longurl = getLongUrl(shorturl)
     
-    print("\n\n")
     if not longurl: return JSONResponse(
             content = {'res' : 'no redirection'},
             status_code = 404
         )
 
+    storeClickAnalytics(request, shorturl)
+
+    print("\n\n")
     return RedirectResponse(longurl)
 
 
@@ -43,3 +45,21 @@ def getLongUrl(shorturl: str):
 
     except DoesNotExist:
         return None
+
+
+
+def storeClickAnalytics(request, shorturl):
+    print(request.client.host)
+
+    if request.client.host.startswith('127.0.0.1'): return
+
+
+    ip = geocoder.ip( request.client.host )
+    print(ip.latlng)
+
+    # ip_log = AnalyticsModel(
+        # shorturl = shorturl,
+        # ip_address = request.client.host,
+        # city = ip.city,
+        # latlng = ip.latlng
+    # ).save()

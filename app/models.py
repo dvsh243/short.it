@@ -11,3 +11,16 @@ class ShortUrlModel(Document):
         'collection' : 'ShortUrls',
         'indexes' : ['shorturl']
     }
+
+
+class AnalyticsModel(Document):
+    clicked_at = DateTimeField(default = datetime.now())
+    shorturl = StringField(required = True)
+    ip_address = StringField()
+    city = StringField()
+    latlng = ListField()
+
+    meta = {
+        'collection' : 'ClickAnalytics',
+        'indexes' : ['shorturl']
+    }
