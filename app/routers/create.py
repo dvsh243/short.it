@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, Depends
+from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 import uuid
 from mongoengine.errors import DoesNotExist
