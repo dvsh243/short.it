@@ -7,6 +7,11 @@
 # GET /h98g1hg0 -> redirect to url (MD5 hashing)
 # GET /h98g1hg0/analytics -> redirection analytics
 
+
+# fix hash collision
+# rate limiting
+
+
 # FRONT-END
 # -> create tiny url
 # -> analytics (total clicks, location wise clicks)

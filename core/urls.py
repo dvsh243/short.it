@@ -25,6 +25,7 @@ async def startup_event():
 
     await connect_to_mongo()
 
+
 app.include_router( create.router )
 app.include_router( redirect.router )
 app.include_router( analytics.router )

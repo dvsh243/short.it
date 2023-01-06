@@ -14,5 +14,5 @@ async def connect_to_mongo():
 
 
 # # # # HASHING SALT # # # #
-HASHING_SALT = b'$2b$12$KsXtiOWxL/rJllAGBr3WWe'
+# HASHING_SALT = b'$2b$12$KsXtiOWxL/rJllAGBr3WWe'
 # # # # HASHING SALT # # # #
