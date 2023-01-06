@@ -1,12 +1,11 @@
 # fix hash collision on create
-# rate limiting
 # query country wise click count
 
 # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
 # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
 
 
-# python, html, css, javascript, mongodb, nginx 
+# python, html, css, javascript, mongodb, nginx, uuid
 
 
 '''v1'''
@@ -28,11 +27,16 @@
 
 
 '''v2'''
-# api/create -> create tiny url
 # lock -> ask password before redirection
 # login
 # show my created tiny urls
 # analytics -> url clicks and locations
+
+# scaling -> 
+# handling concurrent creation of urls
+# queueing requests
+# load balancing
+# rate limiting
 
 
 # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - # - 
