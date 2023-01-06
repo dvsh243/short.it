@@ -15,6 +15,7 @@
 # FRONT-END
 # -> create tiny url
 # -> analytics (total clicks, location wise clicks)
+# -> no such page found
 
 '''
 analytics data example -> 
