@@ -51,15 +51,18 @@ def getLongUrl(shorturl: str):
 def storeClickAnalytics(request, shorturl):
     print(request.client.host)
 
-    if request.client.host.startswith('127.0.0.1'): return
+    if request.client.host.startswith('127.0.0.1'): 
+        print("[LOCALHOST] running on localhost")
+        return
 
 
     ip = geocoder.ip( request.client.host )
-    print(ip.latlng)
+    print(ip.city, ip.latlng)
 
-    # ip_log = AnalyticsModel(
-        # shorturl = shorturl,
-        # ip_address = request.client.host,
-        # city = ip.city,
-        # latlng = ip.latlng
-    # ).save()
+    ip_log = AnalyticsModel(
+        shorturl = shorturl,
+        ip_address = request.client.host,
+        city = ip.city,
+        latlng = ip.latlng
+    ).save()
+    print("[LOG] logged ip address")
