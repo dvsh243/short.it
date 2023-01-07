@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortURL</title>
+</head>
+<body>
+    
+    <h1>SHORTURL here !!</h1>
+
+    <form>
+        <input id="#longurl" type="text" placeholder="longurl">
+        <button type="submit" onclick="UserAction()">shorten</button>
+    </form>
+
+    <script>
+        const UserAction = async() => {
+            longurl = document.getElementById("#longurl").value
+
+            res = await fetch(
+                "/api/create",
+                {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: {"longurl" : longurl}
+                }
+            )
+            alert(res.data)
+        }
+    </script>
+
+</body>
+</html>

@@ -17,6 +17,7 @@ async def get_analytics(
     print("\n\n")
 
     print(f"getting analytics for --> {shorturl}")
+    analytics = getAnalytics(shorturl)
 
     print("\n\n")
     # return template response here
@@ -41,12 +42,10 @@ async def get_json_analytics(
 
 
 def getAnalytics(shorturl):
-    # need to count distinct country wise click counts 
 
     click_count = AnalyticsModel.objects.filter(
         shorturl = shorturl
     ).count()
-    
 
     return {
         'total_clicks' : click_count,
@@ -55,10 +54,15 @@ def getAnalytics(shorturl):
 
 
 def getCityMap(shorturl):
-
+    
     # can store a cache of cities for fast retrieval
+    # do a daily cron job instead of providing real time analytics
+    # or can do long polling too
+
     cityMap = {}
-    cities = AnalyticsModel.objects.distinct('city')
+    cities = AnalyticsModel.objects(
+        shorturl = shorturl
+    ).distinct('city')
     # mongodb atlas free tier doesnt allow -> item_frequencies('city')
 
     for city in cities:

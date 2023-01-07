@@ -1,19 +1,39 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 import uuid
 from mongoengine.errors import DoesNotExist
+from fastapi.templating import Jinja2Templates
 
 from app.serializers import CreateSerializer
 from app.models import ShortUrlModel
 
 router = APIRouter(
     tags = ['api'],
-    prefix = '/api'
+    prefix = ''
 )
 
+templates = Jinja2Templates(directory = 'static')
 
-@router.post('/create')
+
+@router.get('/create')
 async def create(
+        request: Request
+    ):
+    print("\n\n")
+
+    print("getting create shorturl page")
+
+    print("\n\n")
+    
+    return templates.TemplateResponse(
+        "create.html", 
+        context = {'request' : request}
+    )
+
+
+
+@router.post('/api/create')
+async def create_api(
         request: CreateSerializer
     ):
     print("\n\n")
