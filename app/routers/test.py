@@ -34,3 +34,21 @@ async def test():
         content = {'res' : 'success'},
         status_code = 200
     )
+
+
+
+
+
+# Anubhav's Weather App
+from fastapi.templating import Jinja2Templates
+templates = Jinja2Templates(directory = 'static')
+
+@router.get('/weather')
+async def weatherApp(
+        request: Request
+    ):
+
+    return templates.TemplateResponse(
+        'weather.html',
+        context = {'request' : request}
+    )
